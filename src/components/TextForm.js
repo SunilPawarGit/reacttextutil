@@ -43,26 +43,46 @@ export default function TextForm(props) {
             value={text}
             onChange={handleOnChange}
             style={{
-              backgroundColor: props.mode === "dark" ? "grey" : "white",
+              backgroundColor: props.mode === "dark" ? "#13466e" : "white",
               color: props.mode === "dark" ? "white" : "black",
             }}
           ></textarea>
         </div>
 
         {/* Buttons */}
-        <button onClick={handleClick} className="btn btn-primary mx-1">
+        <button
+          disabled={text.length === 0}
+          onClick={handleClick}
+          className="btn btn-primary mx-1 my-1"
+        >
           To Upper
         </button>
-        <button onClick={handleLoClick} className="btn btn-primary mx-1">
+        <button
+          disabled={text.length === 0}
+          onClick={handleLoClick}
+          className="btn btn-primary mx-1 my-1"
+        >
           To Lower
         </button>
-        <button onClick={handleCopy} className="btn btn-primary mx-1">
+        <button
+          disabled={text.length === 0}
+          onClick={handleCopy}
+          className="btn btn-primary mx-1 my-1"
+        >
           Copy Text
         </button>
-        <button onClick={handleExtraScpaces} className="btn btn-primary mx-1">
+        <button
+          disabled={text.length === 0}
+          onClick={handleExtraScpaces}
+          className="btn btn-primary mx-1 my-1"
+        >
           Remove Extra Space
         </button>
-        <button onClick={handleClear} className="btn btn-primary mx-1">
+        <button
+          disabled={text.length === 0}
+          onClick={handleClear}
+          className="btn btn-primary mx-1 my-1"
+        >
           Clear
         </button>
       </div>
@@ -72,9 +92,20 @@ export default function TextForm(props) {
       >
         <h1>Your Summary</h1>
         <p>
-          {text.split(" ").length - 1} Words and {text.length} Characters.
+          {
+            text.split(" ").filter((ele) => {
+              return ele.length !== 0;
+            }).length
+          }{" "}
+          Words and {text.length} Characters.
         </p>
-        <p>{0.008 * text.split(" ").length} Minutes Read</p>
+        <p>
+          {0.008 *
+            text.split(" ").filter((ele) => {
+              return ele.length !== 0;
+            }).length}{" "}
+          Minutes Read
+        </p>
         <h1>Preview</h1>
 
         <p>{text.length > 0 ? text : "Enter something to preview it here"}</p>
