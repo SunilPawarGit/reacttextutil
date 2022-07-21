@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 
 import { Routes, Route } from "react-router-dom";
-
+// "homepage": "http://SunilPawarGit.com/reacttextutil", deployed on github
 import About from "./components/About";
 import Navbar from "./components/Navbar";
 import Alert from "./components/Alert";
